@@ -5,6 +5,6 @@ logger.o
 help.o
 logo.o
 sql_test.o
-test_gtk.o
+gtk_test.o
 os_info.o
 netbenixCMD
