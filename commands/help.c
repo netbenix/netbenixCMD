@@ -12,5 +12,9 @@
 #include "help.h"
 
 void outputHelp(){
-	
+	printf("usage: netbenixCMD [option]\n");
+	printf("Options:\n");
+	printf("--help		: this help page\n");
+	printf("--gtk-test	: opens the gtk test ; LINUX ONLY\n");
+	printf("--os-info	: shows your os informations\n");
 }

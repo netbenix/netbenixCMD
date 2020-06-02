@@ -10,7 +10,7 @@
 	GtkWidget *level;
 	GtkBuilder *builder;
 
-void createTestWindow(){
+void createGTKTestWindow(){
 
 	gtk_init(0, NULL);
 

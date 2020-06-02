@@ -10,12 +10,8 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkconfig.h>
 #include <gtk/gtk.h>
-#endif
-
-
 #include "commands/test_gtk.h"
 #endif
-
 
 #include "etc/logo.h"
 #include "utils/logger.h"
@@ -47,10 +43,11 @@ int main(int argc, char *argv[]){
     logger("Logo Displayed.");
 
     if(!strcmp(argv[1], "--help")){
+        logger("Showing Help");
         outputHelp();
     } else if (!strcmp(argv[1], "--gtk-test")){
         #ifdef linux
-        createTestWindow();
+        createGTKTestWindow();
         #else
         printf("[ERROR] gtk-test is linux only.\n");
         logger("[ERROR] gtk-test is linux only.");

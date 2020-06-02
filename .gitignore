@@ -1,2 +1,7 @@
 glade/test_window.glade~
 output.log
+main.o
+logger.o
+help.o
+test_gtk.o
+os_info.o
