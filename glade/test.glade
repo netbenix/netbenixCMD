@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.36.0 -->
+<interface>
+  <requires lib="gtk+" version="3.22"/>
+  <object class="GtkWindow" id="window">
+    <property name="width_request">300</property>
+    <property name="height_request">230</property>
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <property name="default_width">300</property>
+    <property name="default_height">230</property>
+    <property name="icon">../logo.png</property>
+    <property name="gravity">center</property>
+    <signal name="focus-in-event" handler="on_window_focus_in_event" swapped="no"/>
+    <signal name="focus-out-event" handler="on_window_focus_out_event" swapped="no"/>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkButton" id="button1">
+            <property name="label" translatable="yes">Ok</property>
+            <property name="width_request">100</property>
+            <property name="height_request">31</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Pink Fluffy Unicorns</property>
+            <signal name="clicked" handler="on_button1_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">135</property>
+            <property name="y">183</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="width_request">369</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="justify">center</property>
+            <property name="max_width_chars">50</property>
+            <attributes>
+              <attribute name="font-desc" value="System-ui Bold 10"/>
+              <attribute name="stretch" value="normal"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="y">57</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="gay_check">
+            <property name="label" translatable="yes">I'm Gay.</property>
+            <property name="width_request">107</property>
+            <property name="height_request">24</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="on_gay_check_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">140</property>
+            <property name="y">153</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinner" id="useless_spinner">
+            <property name="width_request">40</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="active">True</property>
+          </object>
+          <packing>
+            <property name="x">324</property>
+            <property name="y">179</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLevelBar" id="level">
+            <property name="width_request">100</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="max_value">100</property>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">201</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+  </object>
+</interface>
