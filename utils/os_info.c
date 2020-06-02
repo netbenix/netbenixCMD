@@ -1,26 +1,15 @@
-#ifdef _WIN32 || _WIN64
-#include <windows.h>
-#endif
-
-#ifdef linux
-
-#endif
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <malloc.h>
 #include <string.h>
+
 #include "os_info.h"
 #include "logger.h"
 
 char* getOS(){
 	char *os;
 	os = malloc(sizeof (char) * 20);
-
-	#ifdef _WIN32 || _WIN64
-	strcpy(os, "Windows");
-	#endif
 	#ifdef linux
 	strcpy(os, "Linux");
 	#endif

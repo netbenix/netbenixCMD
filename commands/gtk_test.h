@@ -1,5 +1,5 @@
-#ifndef _TEST_GTK_H_
-#define _TEST_GTK_H_
+#ifndef _GTK_TEST_H_
+#define _GTK_TEST_H_
 #include <gtk/gtk.h>
 
 void createGTKTestWindow();

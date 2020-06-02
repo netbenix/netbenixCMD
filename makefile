@@ -1,8 +1,8 @@
 CC= gcc
 ARGS= -export-dynamic
-CFLAGS= $(shell pkg-config --cflags gtk+-3.0)
-LDLIBS= $(shell pkg-config --libs gtk+-3.0) 
-OBJ= main.o logo.o logger.o help.o os_info.o test_gtk.o
+CFLAGS= $(shell pkg-config --cflags gtk+-3.0) -I/usr/include/mysql
+LDLIBS= $(shell pkg-config --libs gtk+-3.0) -L/usr/lib/mysql -lmysqlclient
+OBJ= main.o logo.o logger.o help.o os_info.o gtk_test.o sql_test.o
 
 netbenixCMD: $(OBJ)
 	$(CC) $(CFLAGS) $(ARGS) -o netbenixCMD $(OBJ) $(LDLIBS)
@@ -16,5 +16,7 @@ help.o: commands/help.c
 	$(CC) $(CFLAGS) -c commands/help.c
 os_info.o: utils/os_info.c
 	$(CC) $(CFLAGS) -c utils/os_info.c
-test_gtk.o: commands/test_gtk.c
-	$(CC) $(CFLAGS) -c commands/test_gtk.c $(LDLIBS)
+gtk_test.o: commands/gtk_test.c
+	$(CC) $(CFLAGS) -c commands/gtk_test.c
+sql_test.o: commands/sql_test.c
+	$(CC) $(CFLAGS) -c commands/sql_test.c

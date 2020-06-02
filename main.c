@@ -1,8 +1,3 @@
-#ifdef _WIN32 || _WIN64
-#include <windows.h>
-#endif
-
-#ifdef linux
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -10,13 +5,15 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkconfig.h>
 #include <gtk/gtk.h>
-#include "commands/test_gtk.h"
-#endif
+#include "commands/gtk_test.h"
 
 #include "etc/logo.h"
 #include "utils/logger.h"
 #include "utils/os_info.h"
 #include "commands/help.h"
+
+#include "commands/sql_test.h"
+
 
 #define VERSION "0.1.0"
 #define AUTHOR "netbenix"
@@ -25,6 +22,7 @@ void exit_app(){
     logger("Exiting.");
     exit(0);
 }
+
 
 int main(int argc, char *argv[]){
     char buffer[1024];
@@ -46,15 +44,14 @@ int main(int argc, char *argv[]){
         logger("Showing Help");
         outputHelp();
     } else if (!strcmp(argv[1], "--gtk-test")){
-        #ifdef linux
+        logger("Stating GTK Test");
         createGTKTestWindow();
-        #else
-        printf("[ERROR] gtk-test is linux only.\n");
-        logger("[ERROR] gtk-test is linux only.");
-        #endif
     } else if (!strcmp(argv[1], "--os-info")){
         logger("Showing OS Information");
         print_Specs();
+    } else if (!strcmp(argv[1], "--sql-test")){
+        logger("Starting SQL Test");
+        testSQLConnection();
     } else {
         printf("Argument unknown. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Argument unknown. Given argument: %s", argv[1]);

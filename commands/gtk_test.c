@@ -1,12 +1,13 @@
 #include <gtk/gtk.h>
 
+#include "gtk_test.h"
 #include "../utils/logger.h"
 
 	GtkWidget *window;
 	GtkWidget *fixed1;
 	GtkWidget *button1;
 	GtkWidget *label;
-	GtkWidget *gay_check;
+	GtkWidget *check;
 	GtkWidget *level;
 	GtkBuilder *builder;
 
@@ -22,7 +23,7 @@ void createGTKTestWindow(){
 	fixed1 = GTK_WIDGET(gtk_builder_get_object(builder, "fixed1"));
 	button1 = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
 	label = GTK_WIDGET(gtk_builder_get_object(builder, "label"));
-	gay_check = GTK_WIDGET(gtk_builder_get_object(builder, "gay_check"));
+	check = GTK_WIDGET(gtk_builder_get_object(builder, "check"));
 	level = GTK_WIDGET(gtk_builder_get_object(builder, "level"));
 
 	gtk_widget_show(window);
@@ -52,11 +53,11 @@ void on_button1_clicked(GtkButton *b){
 
 void on_gay_check_toggled(GtkToggleButton *t){
 	if(gtk_toggle_button_get_active(t)){
-		gtk_label_set_text(GTK_LABEL(label), (const gchar*) "Oh hey, I'm gay now.");
-		logger("[GTK] Toggle 'gay_check' changed to toggled.");
+		gtk_label_set_text(GTK_LABEL(label), (const gchar*) "Toggle checked.");
+		logger("[GTK] Toggle 'check' changed to toggled.");
 	} else {
-		gtk_label_set_text(GTK_LABEL(label), (const gchar*) "Well, I'm not longer gay.");
-		logger("[GTK] Toggle 'gay_check' changed to untoggled.");
+		gtk_label_set_text(GTK_LABEL(label), (const gchar*) "Toggle unchecked.");
+		logger("[GTK] Toggle 'check' changed to untoggled.");
 	}
 }
 
