@@ -14,7 +14,7 @@ void createTestWindow(){
 
 	gtk_init(0, NULL);
 
-	builder = gtk_builder_new_from_file("glade/test.glade");
+	builder = gtk_builder_new_from_file("glade/test_window.glade");
 	window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
 	g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 	gtk_builder_connect_signals(builder, NULL);
