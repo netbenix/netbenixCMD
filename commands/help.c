@@ -9,5 +9,5 @@ void outputHelp(){
 	printf("--help		: this help page\n");
 	printf("--gtk-test	: opens the gtk test\n");
 	printf("--sql-test	: make a test connection to a mysql server\n");
-	printf("--os-info	: shows your os informations\n");
+	printf("--os-info	: shows informations about your os\n");
 }

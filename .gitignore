@@ -1,3 +1,4 @@
+.vscode
 glade/test_window.glade~
 output.log
 main.o
