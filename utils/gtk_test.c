@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 
 #include "gtk_test.h"
-#include "../utils/logger.h"
+#include "logger.h"
 
 	GtkWidget *window;
 	GtkWidget *fixed1;

@@ -7,8 +7,8 @@
 #include <gtk/gtk.h>
 
 #include "commands/help.h"
-#include "commands/gtk_test.h"
-#include "commands/sql_test.h"
+#include "utils/gtk_test.h"
+#include "utils/sql_test.h"
 #include "etc/logo.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
@@ -22,6 +22,42 @@ void exit_app(){
     exit(0);
 }
 
+// Color Codes:
+// Reset:       \033[0m
+// Red:         \033[0;31m
+// Green:       \033[0;32m
+// Yellow:      \033[0;33m
+// Blue:        \033[0;34m
+// Magenta:     \033[0;35m
+// Cyan:        \033[0;36m
+// BoldRed:     \033[1;31m
+// BoldGreen:   \033[1;32m
+// BoldYellow:  \033[1;33m
+// BoldBlue:    \033[1;34m
+// BoldMagenta: \033[1;35m
+// BoldCyan:    \033[1;36m
+
+
+int commandHandler(char* cmd){
+    if(!strcmp(cmd, "list")){ 
+        printf("\033[0;34mlist\033[0m    :   this list\n");
+        printf("\033[0;34mversion\033[0m :   shows the version\n");
+        printf("\033[0;34mexit\033[0m    :   exit the program\n");
+        return 0;
+    } else if(!strcmp(cmd, "version")){ 
+        printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
+        printf("Author: \033[1;34m%s\033[0m\n", AUTHOR);
+        logger("Showing program version.");
+        return 0;
+    } else if(!strcmp(cmd, "exit")){
+        return 1;
+    }else {
+        printf("Unknown command.\n");
+        logger("User entered unknown command.");
+        return 0;
+    }
+}
+
 
 int main(int argc, char *argv[]){
     char buffer[1024];
@@ -29,16 +65,16 @@ int main(int argc, char *argv[]){
     snprintf(buffer, sizeof(buffer), "Starting netbenixCMD (Version: %s)", VERSION);
     logger(buffer);
     log_Specs();
-    if(argc < 2){
-        printf("Not enough Arguments. Please use --help for more information.\n");
-        snprintf(buffer, sizeof(buffer), "[ERROR] Not enough Arguments. Total Arguments: %d", argc -1);
-        logger(buffer);
-        exit_app();
-    }
-
     showLogo(); //Show the Logo
     logger("Logo Displayed.");
 
+    if(argc > 2){
+        printf("Too many arguments. Please use --help for more information.\n");
+        snprintf(buffer, sizeof(buffer), "[ERROR] Too many arguments. Argument count: %i", argc-1);
+        logger(buffer);
+    }
+
+    if(argc == 2){
     if(!strcmp(argv[1], "--help")){
         logger("Showing Help.");
         outputHelp();
@@ -55,6 +91,18 @@ int main(int argc, char *argv[]){
         printf("Argument unknown. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Argument unknown. Given argument: %s", argv[1]);
         logger(buffer);
+    }
+    }
+
+    if(argc == 1){
+        int exit = 0;
+        char cmd[128];
+        logger("Starting Command Handler.");
+        while (!exit){
+            printf("\033[0;32mnCMD> \033[0m");
+            scanf("%s", &cmd);
+            exit = commandHandler(cmd);
+        }
     }
     
     printf("\n");

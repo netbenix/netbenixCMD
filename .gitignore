@@ -1,5 +1,6 @@
 .vscode
 glade/test_window.glade~
+netbenixCMD
 output.log
 main.o
 logger.o
@@ -8,4 +9,3 @@ logo.o
 sql_test.o
 gtk_test.o
 sys_info.o
-netbenixCMD

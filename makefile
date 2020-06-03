@@ -16,7 +16,7 @@ help.o: commands/help.c
 	$(CC) $(CFLAGS) -c commands/help.c
 sys_info.o: utils/sys_info.c
 	$(CC) $(CFLAGS) $(ARGS) -c utils/sys_info.c
-gtk_test.o: commands/gtk_test.c
-	$(CC) $(CFLAGS) -c commands/gtk_test.c
-sql_test.o: commands/sql_test.c
-	$(CC) $(CFLAGS) -c commands/sql_test.c
+gtk_test.o: utils/gtk_test.c
+	$(CC) $(CFLAGS) -c utils/gtk_test.c
+sql_test.o: utils/sql_test.c
+	$(CC) $(CFLAGS) -c utils/sql_test.c

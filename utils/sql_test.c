@@ -4,7 +4,7 @@
 
 #include <mysql/mysql.h>
 #include "sql_test.h"
-#include "../utils/logger.h"
+#include "logger.h"
 
 
 void testSQLConnection(){
