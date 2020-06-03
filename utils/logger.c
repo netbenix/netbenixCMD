@@ -4,7 +4,7 @@
 #include "logger.h"
 
 
-void logger(char message[255]){
+void logger(char message[512]){
 	FILE *log_file;
 	time_t t = time(NULL);
 	struct tm tm = *localtime(&t);
