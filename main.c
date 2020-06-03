@@ -5,14 +5,13 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkconfig.h>
 #include <gtk/gtk.h>
-#include "commands/gtk_test.h"
 
+#include "commands/help.h"
+#include "commands/gtk_test.h"
+#include "commands/sql_test.h"
 #include "etc/logo.h"
 #include "utils/logger.h"
-#include "utils/os_info.h"
-#include "commands/help.h"
-
-#include "commands/sql_test.h"
+#include "utils/sys_info.h"
 
 
 #define VERSION "0.1.0"
@@ -46,8 +45,8 @@ int main(int argc, char *argv[]){
     } else if (!strcmp(argv[1], "--gtk-test")){
         logger("Stating GTK Test");
         createGTKTestWindow();
-    } else if (!strcmp(argv[1], "--os-info")){
-        logger("Showing OS Information");
+    } else if (!strcmp(argv[1], "--sys-info")){
+        logger("Showing System Information");
         print_Specs();
     } else if (!strcmp(argv[1], "--sql-test")){
         logger("Starting SQL Test");

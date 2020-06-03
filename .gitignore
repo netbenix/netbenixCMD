@@ -7,5 +7,5 @@ help.o
 logo.o
 sql_test.o
 gtk_test.o
-os_info.o
+sys_info.o
 netbenixCMD

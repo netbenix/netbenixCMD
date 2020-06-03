@@ -5,7 +5,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "os_info.h"
+#include "sys_info.h"
 #include "logger.h"
 #include <cpuid.h>
 

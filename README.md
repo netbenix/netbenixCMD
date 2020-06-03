@@ -11,7 +11,8 @@ Version: *0.1.0*
 ## Features:
 - A help page (OMG!!!)
 - A little GTK Test
-- Can detect if you're using linux or Windows and tell the Architecture you're running on
+- Can detect if you're using linux or not and tell the Architecture you're running on
+- Can give you a bit of information about your CPU (but just a little bit)
 
 ## Building:
 Install packages: make, gtk3, libgtk-3-dev, gcc, mysql
@@ -29,4 +30,4 @@ After building use ```./netbenixCMD <argument>``` to start the program
 - ```--help```      	=> Displays all arguments
 - ```--gtk-test``` 		=> Opens the GTK Test Window
 - ```--sql-test```		=> Makes a test connection to a mysql server
-- ```--os-info```  		=> Outputs your OS Information
+- ```--sys-info```  	=> Gives you information about your system
