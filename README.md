@@ -15,7 +15,7 @@ Version: *0.1.0*
 - Can give you a bit of information about your CPU (but just a little bit)
 
 ## Building:
-Install packages: make, gtk3, libgtk-3-dev, gcc, mysql
+Install packages: *make, gtk3, libgtk-3-dev, gcc, mysql*
 
 Clone Repositroy: ```git clone https://github.com/netbenix/netbenixCMD.git```
 
