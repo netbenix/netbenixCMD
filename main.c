@@ -40,20 +40,21 @@ int main(int argc, char *argv[]){
     logger("Logo Displayed.");
 
     if(!strcmp(argv[1], "--help")){
-        logger("Showing Help");
+        logger("Showing Help.");
         outputHelp();
     } else if (!strcmp(argv[1], "--gtk-test")){
-        logger("Stating GTK Test");
+        logger("Stating GTK Test.");
         createGTKTestWindow();
     } else if (!strcmp(argv[1], "--sys-info")){
-        logger("Showing System Information");
+        logger("Showing System Information.");
         print_Specs();
     } else if (!strcmp(argv[1], "--sql-test")){
-        logger("Starting SQL Test");
+        logger("Starting SQL Test.");
         testSQLConnection();
     } else {
         printf("Argument unknown. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Argument unknown. Given argument: %s", argv[1]);
+        logger(buffer);
     }
     
     printf("\n");

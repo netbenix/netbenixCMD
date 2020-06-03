@@ -11,10 +11,8 @@
 
 
 static inline void native_cpuid(unsigned int *eax, unsigned int *ebx, 
-								unsigned int *ecx, unsigned int *edx){
-	#ifndef __GNUC__
-	#define __asm__ asm
-	#endif
+					unsigned int *ecx, unsigned int *edx){
+
 	asm volatile ("cpuid"
 		: "=a" (*eax),
 		  "=b" (*ebx),
@@ -67,17 +65,6 @@ char* getCPUType(){
 	return type;
 }
 
-double getCPUClockSpeed(){
-	clock_t start, end;
-	double tmp;
-	start = clock();
-	for(int i = 0; i < 10000; i++){
-		tmp = i * i /2;
-	}
-	end = clock();
-	return ((double) (end-start)) / CLOCKS_PER_SEC;
-}
-
 char* getOS(){
 	char *os;
 	os = malloc(sizeof (char) * 20);
@@ -107,7 +94,6 @@ void print_Specs(){
 	printf("CPU Stepping: %u\n", getCPUStepping());
 	printf("CPU Family: %u\n", getCPUFamily());
 	printf("CPU Type: %s\n", getCPUType());
-	printf("CPU Clock: %d\n", getCPUClockSpeed());
 	free(NULL);
 }
 

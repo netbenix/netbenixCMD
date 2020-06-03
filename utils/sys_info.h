@@ -4,7 +4,6 @@
 static inline void native_cpuid(unsigned int *eax, unsigned int *ebx, unsigned int *ecx, unsigned int *edx);
 unsigned int getCPUStepping();
 unsigned int getCPUFamily();
-double getCPUClockSpeed();
 char* getCPUType();
 char* getOS();
 char* getArch();

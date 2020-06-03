@@ -37,6 +37,7 @@ void testSQLConnection(){
 		mysql_close(sql);
 	} else {
 		printf("Successfully connected to: %s", hostname);
+		logger("SQL Test Successful.");
 	}
 
 	mysql_close(sql);
