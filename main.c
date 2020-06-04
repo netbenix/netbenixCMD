@@ -57,9 +57,9 @@ int commandHandler(char* cmd){
     arg[i] = p;
 
     if(!strcmp(arg[0], "list") && argc < 2){ 
-        printf("\033[0;34mlist\033[0m    :   this list\n");
-        printf("\033[0;34mversion\033[0m :   shows the version\n");
-        printf("\033[0;34mexit\033[0m    :   exit the program\n");
+        printf("\033[1;34mlist\033[0m    :   this list\n");
+        printf("\033[1;34mversion\033[0m :   shows the version\n");
+        printf("\033[1;34mexit\033[0m    :   exit the program\n");
         return 0;
     } else if(!strcmp(arg[0], "version") && argc < 2){ 
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);

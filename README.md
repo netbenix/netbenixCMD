@@ -4,6 +4,8 @@ A little project of mine to learn C.
 
 Available for: *Linux*
 
+Tested with: *Ubuntu, Debian, Arch*
+
 Used Libs for Linux: *gtk+3.0, libmysqlclient*
 
 Version: *0.1.0* 
@@ -15,11 +17,15 @@ Version: *0.1.0*
 - Can give you a bit of information about your CPU (but just a little bit)
 
 ## Building:
-Install packages: *make, gtk3, libgtk-3-dev, gcc, mysql*
+Install packages: 
+
+- Ubuntu: ```sudo apt-get install make gcc git libgtk-3-dev libmysqlclient-dev```
+- Debian: ```sudo apt-get install make gcc git libgtk-3-dev libmariadbclient-dev libmariadb-dev-compat```
+- Arch: ```sudo pacman -S make gcc git gtk3 mariadb-libs```
 
 Clone Repositroy: ```git clone https://github.com/netbenix/netbenixCMD.git```
 
-Go into the just cloned directory
+Go into the cloned directory: ```cd netbenixCMD```
 
 Build with command: ```make```
 
@@ -31,3 +37,6 @@ After building use ```./netbenixCMD <argument>``` to start the program
 - ```--gtk-test``` 		=> Opens the GTK Test Window
 - ```--sql-test```		=> Makes a test connection to a mysql server
 - ```--sys-info```  	=> Gives you information about your system
+
+##Known Bugs
+- ```sql-test``` sha-256 passwords not working on Debian
