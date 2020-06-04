@@ -39,26 +39,41 @@ void exit_app(){
 
 
 int commandHandler(char* cmd){
-    if(!strcmp(cmd, "list")){ 
+
+    char* token = strtok(cmd, " ");
+    int argc = 1;
+    char* arg[10];
+    int i = 0;
+    while( token != NULL ){
+        arg[i] = token;
+        token = strtok(NULL, " ");
+        if(token != NULL){
+            i++;
+            argc++;
+        }
+    }
+    char* p = arg[i];
+    p[strlen(p)-1] = 0;
+    arg[i] = p;
+
+    if(!strcmp(arg[0], "list") && argc < 2){ 
         printf("\033[0;34mlist\033[0m    :   this list\n");
         printf("\033[0;34mversion\033[0m :   shows the version\n");
         printf("\033[0;34mexit\033[0m    :   exit the program\n");
         return 0;
-    } else if(!strcmp(cmd, "version")){ 
+    } else if(!strcmp(arg[0], "version") && argc < 2){ 
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
         printf("Author: \033[1;34m%s\033[0m\n", AUTHOR);
         logger("Showing program version.");
         return 0;
-    } else if(!strcmp(cmd, "exit")){
+    } else if(!strcmp(arg[0], "exit") && argc < 2){
         return 1;
     }else {
-        printf("Unknown command.\n");
+        printf("Unknown command. Please use --help for more information.\n");
         logger("User entered unknown command.");
         return 0;
     }
 }
-
-
 int main(int argc, char *argv[]){
     char buffer[1024];
     logger("================================================");
@@ -100,9 +115,10 @@ int main(int argc, char *argv[]){
         logger("Starting Command Handler.");
         while (!exit){
             printf("\033[0;32mnCMD> \033[0m");
-            scanf("%s", &cmd);
+            fgets(cmd, 128, stdin);
             exit = commandHandler(cmd);
         }
+        logger("Exiting Command Handler.");
     }
     
     printf("\n");
