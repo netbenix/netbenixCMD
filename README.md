@@ -30,7 +30,8 @@ Go into the cloned directory: ```cd netbenixCMD```
 Build with command: ```make```
 
 ## Usage
-After building use ```./netbenixCMD <argument>``` to start the program
+After building use ```./netbenixCMD``` to start the program
+If you want to use the testing Arguments use ```./netbenixCMD <argument>```
 
 ## Arguments
 - ```--help```      	=> Displays all arguments
