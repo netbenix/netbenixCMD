@@ -4,9 +4,9 @@ A little project of mine to learn C.
 
 Available for: *Linux*
 
-Tested with: *Ubuntu, Debian, Arch*
+Tested on: *Ubuntu, Debian, Arch*
 
-Used Libs for Linux: *gtk+3.0, libmysqlclient*
+Used libs for Linux: *gtk+3.0, libmysqlclient*
 
 Version: *0.1.0* 
 
@@ -27,10 +27,11 @@ Clone Repositroy: ```git clone https://github.com/netbenix/netbenixCMD.git```
 
 Go into the cloned directory: ```cd netbenixCMD```
 
-Build with command: ```make```
+Build program: ```make```
 
 ## Usage
 After building use ```./netbenixCMD``` to start the program
+
 If you want to use the testing Arguments use ```./netbenixCMD <argument>```
 
 ## Arguments
