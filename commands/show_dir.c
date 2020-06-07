@@ -26,7 +26,7 @@ void showDirectory(char *arg[]){
 	DIR *d;
 	struct dirent *dir;
 	char path[PATH_MAX];
-
+	
 	d = opendir(arg[1]);
 	if(d == NULL){
 		printf("Folder not found.\n");

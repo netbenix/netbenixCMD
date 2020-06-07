@@ -18,7 +18,7 @@
 #include "utils/sys_info.h"
 
 
-#define VERSION "0.1.0"
+#define VERSION "0.2.0"
 #define AUTHOR "netbenix"
 
 void exit_app(){
