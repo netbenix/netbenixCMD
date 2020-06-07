@@ -33,7 +33,6 @@ void showDirectory(char *arg[]){
 		return;
 	}
 	realpath(arg[1], path);
-	printf("Path: %s\n", path);
 	if(d){
 		while((dir = readdir(d))){
 			if(dir->d_type == 8){	//IF IS FILE
