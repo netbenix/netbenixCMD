@@ -61,8 +61,8 @@ int commandHandler(char *cmd){
     arg[i] = p;
 
     if(!strcmp(arg[0], "list")){ 
-        printf("\033[1;34mcd\033[0m      :   change directory");
-        printf("\033[1;34mdir\033[0m     :   show contents of directory");
+        printf("\033[1;34mcd\033[0m      :   change directory\n");
+        printf("\033[1;34mdir\033[0m     :   show contents of directory\n");
         printf("\033[1;34mlist\033[0m    :   this list\n");
         printf("\033[1;34mversion\033[0m :   shows the version\n");
         printf("\033[1;34mexit\033[0m    :   exit the program\n");
