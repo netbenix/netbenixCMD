@@ -9,3 +9,5 @@ logo.o
 sql_test.o
 gtk_test.o
 sys_info.o
+show_dir.o
+change_dir.o

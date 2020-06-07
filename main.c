@@ -5,8 +5,12 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkconfig.h>
 #include <gtk/gtk.h>
+#include <unistd.h>
+#include <linux/limits.h>
 
 #include "commands/help.h"
+#include "commands/show_dir.h"
+#include "commands/change_dir.h"
 #include "utils/gtk_test.h"
 #include "utils/sql_test.h"
 #include "etc/logo.h"
@@ -38,11 +42,11 @@ void exit_app(){
 // BoldCyan:    \033[1;36m
 
 
-int commandHandler(char* cmd){
+int commandHandler(char *cmd){
 
-    char* token = strtok(cmd, " ");
+    char *token = strtok(cmd, " ");
     int argc = 1;
-    char* arg[10];
+    char *arg[10];
     int i = 0;
     while( token != NULL ){
         arg[i] = token;
@@ -52,30 +56,40 @@ int commandHandler(char* cmd){
             argc++;
         }
     }
-    char* p = arg[i];
+    char *p = arg[i];
     p[strlen(p)-1] = 0;
     arg[i] = p;
 
-    if(!strcmp(arg[0], "list") && argc < 2){ 
+    if(!strcmp(arg[0], "list")){ 
         printf("\033[1;34mlist\033[0m    :   this list\n");
         printf("\033[1;34mversion\033[0m :   shows the version\n");
         printf("\033[1;34mexit\033[0m    :   exit the program\n");
         return 0;
-    } else if(!strcmp(arg[0], "version") && argc < 2){ 
+    } else if(!strcmp(arg[0], "version")){ 
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
         printf("Author: \033[1;34m%s\033[0m\n", AUTHOR);
         logger("Showing program version.");
         return 0;
-    } else if(!strcmp(arg[0], "exit") && argc < 2){
+    } else if(!strcmp(arg[0], "exit")){
         return 1;
-    }else {
+    } else if(!strcmp(arg[0], "dir")){
+        showDirectory(arg);
+        return 0;
+    } else if(!strcmp(arg[0], "cd")){
+        changeCurrentWorkDir(arg);
+        return 0;
+    } else {
         printf("Unknown command. Please use --help for more information.\n");
         logger("User entered unknown command.");
         return 0;
     }
 }
+
+
 int main(int argc, char *argv[]){
     char buffer[1024];
+    extern char loggerDirPath[PATH_MAX];
+    realpath("." , loggerDirPath);
     logger("================================================");
     snprintf(buffer, sizeof(buffer), "Starting netbenixCMD (Version: %s)", VERSION);
     logger(buffer);
@@ -114,7 +128,8 @@ int main(int argc, char *argv[]){
         char cmd[128];
         logger("Starting Command Handler.");
         while (!exit){
-            printf("\033[0;32mnCMD> \033[0m");
+            char cwp[255];
+            printf("\033[0;32m%s> \033[0m", getcwd(cwp, 255));
             fgets(cmd, 128, stdin);
             exit = commandHandler(cmd);
         }
