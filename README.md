@@ -23,7 +23,7 @@ Install packages:
 - Debian: ```sudo apt-get install make gcc git libgtk-3-dev libmariadbclient-dev libmariadb-dev-compat```
 - Arch: ```sudo pacman -S make gcc git gtk3 mariadb-libs```
 
-Clone Repositroy: ```git clone https://github.com/netbenix/netbenixCMD.git```
+Clone repository: ```git clone https://github.com/netbenix/netbenixCMD.git```
 
 Go into the cloned directory: ```cd netbenixCMD```
 
@@ -32,7 +32,7 @@ Build program: ```make```
 ## Usage
 After building use ```./netbenixCMD``` to start the program
 
-If you want to use the testing Arguments use ```./netbenixCMD <argument>```
+If you want to use the testing arguments use ```./netbenixCMD <argument>```
 
 ## Arguments
 - ```--help```      	=> Displays all arguments
