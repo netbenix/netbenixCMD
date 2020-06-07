@@ -14,7 +14,7 @@ void testSQLConnection(){
 	char hostname[200];
 	unsigned int port;
 	char user[200];
-	char* password;
+	char *password;
 	char database[200];
 
 	printf("====== SQL TEST ======\n");
