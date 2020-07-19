@@ -70,6 +70,7 @@ int commandHandler(char *cmd){
     } else if(!strcmp(arg[0], "version")){ 
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
         printf("Author: \033[1;34m%s\033[0m\n", AUTHOR);
+        printf("Github: \033[1;34mhttps://github.com/netbenix/netbenixCMD\033[0m\n");
         logger("Showing program version.");
         return 0;
     } else if(!strcmp(arg[0], "exit")){
@@ -81,7 +82,7 @@ int commandHandler(char *cmd){
         changeCurrentWorkDir(arg);
         return 0;
     } else {
-        printf("Unknown command. Please use --help for more information.\n");
+        printf("Unknown command. Please use 'list' for more information.\n");
         logger("User entered unknown command.");
         return 0;
     }
