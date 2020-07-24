@@ -6,6 +6,7 @@
 
 char loggerDirPath[PATH_MAX];
 
+//Logs given message into output.log
 void logger(char message[512]){
 	FILE *log_file;
 	time_t t = time(NULL);

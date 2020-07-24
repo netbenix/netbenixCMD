@@ -9,12 +9,12 @@
 void changeCurrentWorkDir(char *arg[]){
 	DIR *d;
 	struct dirent *dir;
-	d = opendir(arg[1]);
-	if(d == NULL){
+	d = opendir(arg[1]); //Try to open directory
+	if(d == NULL){ //Check if directory exists
 		printf("Folder not found.\n");
 		return;
 	} else {
-		chdir(arg[1]);
+		chdir(arg[1]); //If directory exists, change workpath
 	}
-	closedir(d);
+	closedir(d); //Close directory
 }

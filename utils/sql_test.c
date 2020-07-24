@@ -9,8 +9,8 @@
 
 void testSQLConnection(){
 
-	MYSQL *sql;
-	sql = mysql_init(NULL);
+	MYSQL *sql; //SQL connection
+	sql = mysql_init(NULL); //Init connection
 	char hostname[200];
 	unsigned int port;
 	char user[200];
@@ -28,17 +28,18 @@ void testSQLConnection(){
 	scanf("%s", &user);
 	password = getpass("Password: ");
 
+	//Try to connect with given data
 	if(mysql_real_connect(sql, hostname, user, password, database, 33000, NULL, 0) == NULL){
 		fprintf (stderr, "ERROR: mysql_real_connect():"
-        "%u (%s)\n",mysql_errno (sql), mysql_error (sql));
+        "%u (%s)\n",mysql_errno (sql), mysql_error (sql)); //On Error, print it
 		char buffer[1024];
 		snprintf(buffer, sizeof(buffer), "[ERROR] mysql_read_connect(): %u (%s)\n", mysql_errno(sql), mysql_error(sql));
 		logger(buffer);
-		mysql_close(sql);
+		mysql_close(sql); //Close connection
 	} else {
 		printf("Successfully connected to: %s", hostname);
 		logger("SQL Test Successful.");
 	}
 
-	mysql_close(sql);
+	mysql_close(sql); //Close connection
 }

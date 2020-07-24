@@ -3,6 +3,7 @@
 
 #include "help.h"
 
+//Print the help
 void outputHelp(){
 	printf("usage: netbenixCMD [option]\n");
 	printf("Options:\n");

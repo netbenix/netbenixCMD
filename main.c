@@ -22,11 +22,6 @@
 #define VERSION "0.2.2"
 #define AUTHOR "netbenix"
 
-void exit_app(){
-    logger("Exiting.");
-    exit(0);
-}
-
 // Color Codes:
 // Reset:       \033[0m
 // Red:         \033[0;31m
@@ -42,7 +37,12 @@ void exit_app(){
 // BoldMagenta: \033[1;35m
 // BoldCyan:    \033[1;36m
 
+void exit_app(){
+    logger("Exiting.");
+    exit(0);
+}
 
+//Handles the commands
 int commandHandler(char *cmd){
 
     char *token = strtok(cmd, " ");
@@ -61,6 +61,7 @@ int commandHandler(char *cmd){
     p[strlen(p)-1] = 0;
     arg[i] = p;
 
+    //Start to compare the command
     if(!strcmp(arg[0], "list")){ 
         printf("\033[1;34mcd\033[0m      :   change directory\n");
         printf("\033[1;34mdir\033[0m     :   show contents of directory\n");
@@ -89,7 +90,7 @@ int commandHandler(char *cmd){
     }
 }
 
-
+//Action starts here
 int main(int argc, char *argv[]){
     char buffer[1024];
     extern char loggerDirPath[PATH_MAX];
@@ -98,15 +99,16 @@ int main(int argc, char *argv[]){
     snprintf(buffer, sizeof(buffer), "Starting netbenixCMD (Version: %s)", VERSION);
     logger(buffer);
     log_Specs(); //Log system specs
-    showLogo(); //Show the Logo
+    showLogo(); //Show the logo
     logger("Logo Displayed.");
-    checkForUpdate(VERSION); //Check for Update
+    checkForUpdate(VERSION); //Check for newer version of client
     if(argc > 2){
         printf("Too many arguments. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Too many arguments. Argument count: %i", argc-1);
         logger(buffer);
     }
 
+    //Check the startup args
     if(argc == 2){
     if(!strcmp(argv[1], "--help")){
         logger("Showing Help.");
@@ -127,6 +129,7 @@ int main(int argc, char *argv[]){
     }
     }
 
+    //If no startup arg is given, start command handler
     if(argc == 1){
         int exit = 0;
         char cmd[128];

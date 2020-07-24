@@ -27,12 +27,12 @@ void showDirectory(char *arg[]){
 	struct dirent *dir;
 	char path[PATH_MAX];
 	
-	d = opendir(arg[1]);
-	if(d == NULL){
+	d = opendir(arg[1]); //Try to open directory
+	if(d == NULL){ //Check if directory exists
 		printf("Folder not found.\n");
 		return;
 	}
-	realpath(arg[1], path);
+	realpath(arg[1], path); //Get the absolute path of the directory
 	if(d){
 		while((dir = readdir(d))){
 			if(dir->d_type == 8){	//IF IS FILE
@@ -43,6 +43,6 @@ void showDirectory(char *arg[]){
 				printf("%s\n", dir->d_name);
 			}
 		}
-		closedir(d);
+		closedir(d); //Close directory
 	}
 }
