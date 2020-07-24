@@ -23,7 +23,7 @@ int checkForUpdate(char ver[10]){
 
     //Connect to Server
     if(connect(sock, (struct sockaddr *)&server, sizeof(server)) < 0){
-        perror("Error. Connnection failed.");
+        perror("Error. Connnection to update server failed.");
         logger("[ERROR] Connection to update server failed.");
         return 1;
     }
