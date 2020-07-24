@@ -8,7 +8,7 @@ Tested on: *Ubuntu, Debian, Arch*
 
 Used libs for Linux: *gtk+3.0, libmysqlclient*
 
-Version: *0.2.1* 
+Version: *0.2.2* 
 
 ## Features:
 - A help page (OMG!!!)
