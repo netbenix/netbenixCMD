@@ -8,13 +8,14 @@ Tested on: *Ubuntu, Debian, Arch*
 
 Used libs for Linux: *gtk+3.0, libmysqlclient*
 
-Version: *0.1.0* 
+Version: *0.2.1* 
 
 ## Features:
 - A help page (OMG!!!)
 - A little GTK Test
 - Can detect if you're using linux or not and tell the Architecture you're running on
 - Can give you a bit of information about your CPU (but just a little bit)
+- Checks your client version on start with the server
 
 ## Building:
 Install packages: 
