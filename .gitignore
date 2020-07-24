@@ -11,3 +11,4 @@ gtk_test.o
 sys_info.o
 show_dir.o
 change_dir.o
+update_check.o

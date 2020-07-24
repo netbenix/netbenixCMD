@@ -16,6 +16,7 @@
 #include "etc/logo.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
+#include "utils/update_check.h"
 
 
 #define VERSION "0.2.0"
@@ -96,10 +97,10 @@ int main(int argc, char *argv[]){
     logger("================================================");
     snprintf(buffer, sizeof(buffer), "Starting netbenixCMD (Version: %s)", VERSION);
     logger(buffer);
-    log_Specs();
+    log_Specs(); //Log system specs
     showLogo(); //Show the Logo
     logger("Logo Displayed.");
-
+    checkForUpdate(VERSION); //Check for Update
     if(argc > 2){
         printf("Too many arguments. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Too many arguments. Argument count: %i", argc-1);
