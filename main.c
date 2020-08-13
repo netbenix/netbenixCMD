@@ -14,16 +14,17 @@
 #include "utils/gtk_test.h"
 #include "utils/sql_test.h"
 #include "etc/logo.h"
+#include "etc/man.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
 #include "utils/update_check.h"
-#include "etc/man/man.h"
 
 
 #define VERSION "0.2.4"
-#define AUTHOR "netbenix"
 
 bool VER_CHECK_ON_START = true;
+bool DEV_MODE = false;
+bool FUN_CONTENT = false;
 
 // Color Codes:
 // Reset:       \033[0m
@@ -40,10 +41,6 @@ bool VER_CHECK_ON_START = true;
 // BoldMagenta: \033[1;35m
 // BoldCyan:    \033[1;36m
 
-void exit_app(){
-    logger("Exiting.");
-    exit(0);
-}
 
 //Handles the commands
 int commandHandler(char *cmd){
@@ -74,8 +71,9 @@ int commandHandler(char *cmd){
         printf("\033[1;34mexit\033[0m          :   exit the program\n");
         return 0;
     } else if(!strcmp(arg[0], "version")){ 
+
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
-        printf("Author: \033[1;34m%s\033[0m\n", AUTHOR);
+        printf("Author: \033[1;34m%s\033[0m\n", "netbenix");
         printf("Github: \033[1;34mhttps://github.com/netbenix/netbenixCMD\033[0m\n");
         logger("Showing program version.");
         return 0;
@@ -90,6 +88,18 @@ int commandHandler(char *cmd){
     } else if(!strcmp(arg[0], "man")){
         showManEntry(arg);
         return 0;
+    } else if(!strcmp(arg[0], "rainbow")){
+        if(FUN_CONTENT){
+            while(1){
+                printf("\033[0;31m#####");
+                printf("\033[0;32m#####");
+                printf("\033[0;33m#####");
+                printf("\033[0;34m#####");
+                printf("\033[0;35m#####");
+            }
+        } else {
+            return 0;
+        }
     } else {
         printf("Unknown command. Please use 'help' for more information.\n");
         logger("User entered unknown command.");
@@ -135,6 +145,13 @@ int main(int argc, char *argv[]){
     } else if (!strcmp(argv[1], "--no-version-check")){
         VER_CHECK_ON_START = false;
         logger("[INFO] Argument 'no-version-check' used.");
+    } else if (!strcmp(argv[1], "--dev-mode")){
+        VER_CHECK_ON_START = false;
+        DEV_MODE = true;
+        logger("[INFO] Starting in developer mode.");
+    } else if (!strcmp(argv[1], "--time-to-have-fun")){
+        FUN_CONTENT = true;
+        logger("[WARNING] It's time... TO PARTYY.");
     } else {
         printf("Argument unknown. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Argument unknown. Given argument: %s", argv[1]);
@@ -143,22 +160,21 @@ int main(int argc, char *argv[]){
     }
     }
 
-    if(VER_CHECK_ON_START){checkForUpdate(VERSION);}//Check for newer version of client
+    if(VER_CHECK_ON_START){checkForUpdate(VERSION);} //Check for newer version of client
 
     //If no startup arg is given, start command handler
-        int exit = 0;
-        char cmd[128];
-        logger("Starting Command Handler.");
-        while (!exit){
-            char cwp[255];
-            printf("\033[0;32m%s> \033[0m", getcwd(cwp, 255));
-            fgets(cmd, 128, stdin);
-            exit = commandHandler(cmd);
-        }
-        logger("Exiting Command Handler.");
-    
+    int exit = 0;
+    char cmd[128];
+    logger("Starting Command Handler.");
+    while (!exit){
+        char cwp[255];
+        printf("\033[0;32m%s> \033[0m", getcwd(cwp, 255));
+        fgets(cmd, 128, stdin);
+        exit = commandHandler(cmd);
+    }
+    logger("Exiting Command Handler.");
     printf("\n");
-    exit_app();
+    logger("Exiting.");
     return 0;
 }
 

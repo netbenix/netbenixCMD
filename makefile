@@ -26,5 +26,5 @@ change_dir.o: commands/change_dir.c
 	$(CC) $(CFLAGS) -c commands/change_dir.c
 update_check.o: utils/update_check.c
 	$(CC) $(CFLAGS) -c utils/update_check.c
-man.o: etc/man/man.c
-	$(CC) $(CFLAGS) -c etc/man/man.c
+man.o: etc/man.c
+	$(CC) $(CFLAGS) -c etc/man.c

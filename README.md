@@ -41,6 +41,7 @@ If you want to use the testing arguments use ```./netbenixCMD <argument>```
 - ```--sql-test```		    => Makes a test connection to a mysql server
 - ```--sys-info```  	    => Gives you information about your system
 - ```--no-version-check```  => Skips the client version check
+- ```--dev-mode```          => Starts the program in developer mode (right now it just skips version check)
 
 ## Known Bugs
 - ```sql-test``` sha-256 passwords not working on Debian
