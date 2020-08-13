@@ -20,7 +20,7 @@
 #include "etc/man/man.h"
 
 
-#define VERSION "0.2.3"
+#define VERSION "0.2.4"
 #define AUTHOR "netbenix"
 
 bool VER_CHECK_ON_START = true;
