@@ -17,10 +17,13 @@
 #include "utils/logger.h"
 #include "utils/sys_info.h"
 #include "utils/update_check.h"
+#include "etc/man/man.h"
 
 
-#define VERSION "0.2.2"
+#define VERSION "0.2.3"
 #define AUTHOR "netbenix"
+
+bool VER_CHECK_ON_START = true;
 
 // Color Codes:
 // Reset:       \033[0m
@@ -62,12 +65,13 @@ int commandHandler(char *cmd){
     arg[i] = p;
 
     //Start to compare the command
-    if(!strcmp(arg[0], "list")){ 
-        printf("\033[1;34mcd\033[0m      :   change directory\n");
-        printf("\033[1;34mdir\033[0m     :   show contents of directory\n");
-        printf("\033[1;34mlist\033[0m    :   this list\n");
-        printf("\033[1;34mversion\033[0m :   shows the version\n");
-        printf("\033[1;34mexit\033[0m    :   exit the program\n");
+    if(!strcmp(arg[0], "help")){ 
+        printf("\033[1;34mcd \033[0;35m[dir]\033[0m      :   change directory\n");
+        printf("\033[1;34mls \033[0;35m[dir]\033[0m      :   show contents of directory\n");
+        printf("\033[1;34mhelp\033[0m          :   this help list\n");
+        printf("\033[1;34mman \033[0;35m[cmd]\033[0m     :   manual for the commands\n");
+        printf("\033[1;34mversion\033[0m       :   shows the version\n");
+        printf("\033[1;34mexit\033[0m          :   exit the program\n");
         return 0;
     } else if(!strcmp(arg[0], "version")){ 
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
@@ -77,14 +81,17 @@ int commandHandler(char *cmd){
         return 0;
     } else if(!strcmp(arg[0], "exit")){
         return 1;
-    } else if(!strcmp(arg[0], "dir")){
+    } else if(!strcmp(arg[0], "ls")){
         showDirectory(arg);
         return 0;
     } else if(!strcmp(arg[0], "cd")){
         changeCurrentWorkDir(arg);
         return 0;
+    } else if(!strcmp(arg[0], "man")){
+        showManEntry(arg);
+        return 0;
     } else {
-        printf("Unknown command. Please use 'list' for more information.\n");
+        printf("Unknown command. Please use 'help' for more information.\n");
         logger("User entered unknown command.");
         return 0;
     }
@@ -101,7 +108,6 @@ int main(int argc, char *argv[]){
     log_Specs(); //Log system specs
     showLogo(); //Show the logo
     logger("Logo Displayed.");
-    checkForUpdate(VERSION); //Check for newer version of client
     if(argc > 2){
         printf("Too many arguments. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Too many arguments. Argument count: %i", argc-1);
@@ -113,24 +119,33 @@ int main(int argc, char *argv[]){
     if(!strcmp(argv[1], "--help")){
         logger("Showing Help.");
         outputHelp();
+        exit(0);
     } else if (!strcmp(argv[1], "--gtk-test")){
         logger("Stating GTK Test.");
         createGTKTestWindow();
+        exit(0);
     } else if (!strcmp(argv[1], "--sys-info")){
         logger("Showing System Information.");
         print_Specs();
+        exit(0);
     } else if (!strcmp(argv[1], "--sql-test")){
         logger("Starting SQL Test.");
         testSQLConnection();
+        exit(0);
+    } else if (!strcmp(argv[1], "--no-version-check")){
+        VER_CHECK_ON_START = false;
+        logger("[INFO] Argument 'no-version-check' used.");
     } else {
         printf("Argument unknown. Please use --help for more information.\n");
         snprintf(buffer, sizeof(buffer), "[ERROR] Argument unknown. Given argument: %s", argv[1]);
         logger(buffer);
+        exit(0);
     }
     }
 
+    if(VER_CHECK_ON_START){checkForUpdate(VERSION);}//Check for newer version of client
+
     //If no startup arg is given, start command handler
-    if(argc == 1){
         int exit = 0;
         char cmd[128];
         logger("Starting Command Handler.");
@@ -141,7 +156,6 @@ int main(int argc, char *argv[]){
             exit = commandHandler(cmd);
         }
         logger("Exiting Command Handler.");
-    }
     
     printf("\n");
     exit_app();

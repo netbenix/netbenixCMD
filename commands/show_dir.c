@@ -35,12 +35,14 @@ void showDirectory(char *arg[]){
 	realpath(arg[1], path); //Get the absolute path of the directory
 	if(d){
 		while((dir = readdir(d))){
-			if(dir->d_type == 8){	//IF IS FILE
+			if(strcmp(dir->d_name, ".") && strcmp(dir->d_name, "..")){
+				if(dir->d_type == 8){	//IF IS FILE
 				printf("\033[1;34m%s\033[0m\n", dir->d_name);
 			} else if(dir->d_type == 4){ //IF IS DIR
 				printf("\033[1;33m%s\033[0m\n", dir->d_name);
 			} else { //IF IS !FILE AND !DIR
 				printf("%s\n", dir->d_name);
+			}
 			}
 		}
 		closedir(d); //Close directory
