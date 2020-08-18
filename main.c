@@ -148,7 +148,7 @@ int main(int argc, char *argv[]){
         VER_CHECK_ON_START = false;
         DEV_MODE = true;
         logger("[INFO] Starting in developer mode.");
-    } else if (!strcmp(argv[1], "--time-to-have-fun")){
+    } else if (!strcmp(argv[1], "--time-for-fun")){
         FUN_CONTENT = true;
         logger("[WARNING] It's time... TO PARTYY.");
     } else {
