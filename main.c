@@ -21,7 +21,7 @@
 #include "utils/update_check.h"
 
 
-#define VERSION "0.2.4"
+#define VERSION "0.2.5"
 
 bool VER_CHECK_ON_START = true;
 bool DEV_MODE = false;
