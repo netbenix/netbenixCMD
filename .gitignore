@@ -13,3 +13,4 @@ show_dir.o
 change_dir.o
 update_check.o
 man.o
+your-reality.o
