@@ -15,14 +15,17 @@
 #include "utils/sql_test.h"
 #include "etc/logo.h"
 #include "etc/man.h"
+<<<<<<< HEAD
 #include "etc/math.h"
+=======
+>>>>>>> f1cf6269f94065bfb8498dd7ef06bfbb61442b80
 #include "etc/your-reality.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
 #include "utils/update_check.h"
 
 
-#define VERSION "0.2.4"
+#define VERSION "0.2.5"
 
 bool VER_CHECK_ON_START = true;
 bool DEV_MODE = false;
@@ -149,7 +152,7 @@ int main(int argc, char *argv[]){
         VER_CHECK_ON_START = false;
         DEV_MODE = true;
         logger("[INFO] Starting in developer mode.");
-    } else if (!strcmp(argv[1], "--time-to-have-fun")){
+    } else if (!strcmp(argv[1], "--time-for-fun")){
         FUN_CONTENT = true;
         logger("[WARNING] It's time... TO PARTYY.");
     } else {
