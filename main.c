@@ -15,6 +15,8 @@
 #include "utils/sql_test.h"
 #include "etc/logo.h"
 #include "etc/man.h"
+#include "etc/math.h"
+#include "etc/your-reality.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
 #include "utils/update_check.h"
@@ -88,18 +90,16 @@ int commandHandler(char *cmd){
     } else if(!strcmp(arg[0], "man")){
         showManEntry(arg);
         return 0;
-    } else if(!strcmp(arg[0], "rainbow")){
-        if(FUN_CONTENT){
-            while(1){
-                printf("\033[0;31m#####");
-                printf("\033[0;32m#####");
-                printf("\033[0;33m#####");
-                printf("\033[0;34m#####");
-                printf("\033[0;35m#####");
-            }
-        } else {
-            return 0;
+    } else if(!strcmp(arg[0], "rainbow") && FUN_CONTENT){
+        while(1){              
+            printf("\033[0;31m#####");
+            printf("\033[0;32m#####");
+            printf("\033[0;33m#####");
+            printf("\033[0;34m#####");
+            printf("\033[0;35m#####");
         }
+    } else if(!strcmp(arg[0], "your-reality") && FUN_CONTENT){
+        yourReality();
     } else {
         printf("Unknown command. Please use 'help' for more information.\n");
         logger("User entered unknown command.");

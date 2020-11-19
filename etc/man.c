@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "man.h"
+
 // Color Codes:
 // Reset:       \033[0m
 // Red:         \033[0;31m
