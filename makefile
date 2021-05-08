@@ -2,11 +2,7 @@ CC= gcc
 ARGS= -export-dynamic -ansi -std=gnu99
 CFLAGS= $(shell pkg-config --cflags gtk+-3.0) -I/usr/include/mysql
 LDLIBS= $(shell pkg-config --libs gtk+-3.0) -L/usr/lib/mysql -lmysqlclient
-<<<<<<< HEAD
-OBJ= main.o logo.o logger.o help.o sys_info.o gtk_test.o sql_test.o show_dir.o change_dir.o update_check.o man.o your-reality.o math.o
-=======
-OBJ= main.o logo.o logger.o help.o sys_info.o gtk_test.o sql_test.o show_dir.o change_dir.o update_check.o man.o your-reality.o
->>>>>>> f1cf6269f94065bfb8498dd7ef06bfbb61442b80
+OBJ= main.o logo.o logger.o help.o sys_info.o gtk_test.o sql_test.o show_dir.o change_dir.o update_check.o man.o your-reality.o math_ext.o calc.o
 
 netbenixCMD: $(OBJ)
 	$(CC) $(CFLAGS) $(ARGS) -o netbenixCMD $(OBJ) $(LDLIBS)
@@ -32,10 +28,9 @@ update_check.o: utils/update_check.c
 	$(CC) $(CFLAGS) -c utils/update_check.c
 man.o: etc/man.c
 	$(CC) $(CFLAGS) -c etc/man.c
-<<<<<<< HEAD
-math.o: etc/math.c
-	$(CC) $(CFLAGS) -c etc/math.c
-=======
->>>>>>> f1cf6269f94065bfb8498dd7ef06bfbb61442b80
+math.o: etc/math_ext.c
+	$(CC) $(CFLAGS) -c etc/math_ext.c
 your-reality.o: etc/your-reality.c
 	$(CC) $(CFLAGS) -c etc/your-reality.c
+calc.o: utils/calc.c
+	$(CC) $(CFLAGS) -c utils/calc.c
