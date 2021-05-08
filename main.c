@@ -15,10 +15,7 @@
 #include "utils/sql_test.h"
 #include "etc/logo.h"
 #include "etc/man.h"
-<<<<<<< HEAD
 #include "etc/math.h"
-=======
->>>>>>> f1cf6269f94065bfb8498dd7ef06bfbb61442b80
 #include "etc/your-reality.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
@@ -49,7 +46,6 @@ bool FUN_CONTENT = false;
 
 //Handles the commands
 int commandHandler(char *cmd){
-
     char *token = strtok(cmd, " ");
     int argc = 1;
     char *arg[10];
@@ -76,7 +72,6 @@ int commandHandler(char *cmd){
         printf("\033[1;34mexit\033[0m          :   exit the program\n");
         return 0;
     } else if(!strcmp(arg[0], "version")){ 
-
         printf("netbenixCMD (Version: \033[1;34m%s\033[0m)\n", VERSION);
         printf("Author: \033[1;34m%s\033[0m\n", "netbenix");
         printf("Github: \033[1;34mhttps://github.com/netbenix/netbenixCMD\033[0m\n");
