@@ -13,8 +13,5 @@ show_dir.o
 change_dir.o
 update_check.o
 man.o
-<<<<<<< HEAD
 math.o
-=======
->>>>>>> f1cf6269f94065bfb8498dd7ef06bfbb61442b80
 your-reality.o

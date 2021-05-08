@@ -5,7 +5,7 @@
 #include "update_check.h"
 #include "logger.h"
 
-#define SERVER_IP "127.0.0.1"
+#define DEFAULT_IP "127.0.0.1"
 
 int checkForUpdate(char ver[10]){
     int sock;
@@ -19,7 +19,7 @@ int checkForUpdate(char ver[10]){
         logger("Error while creating socket");
     }
     
-    server.sin_addr.s_addr = inet_addr(SERVER_IP); //Set the IP address of the server
+    server.sin_addr.s_addr = inet_addr(DEFAULT_IP); //Set the IP address of the server
     server.sin_family = AF_INET;
     server.sin_port = htons( 34000 ); //Set the server port
 

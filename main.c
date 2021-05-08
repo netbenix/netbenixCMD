@@ -15,10 +15,7 @@
 #include "utils/sql_test.h"
 #include "etc/logo.h"
 #include "etc/man.h"
-<<<<<<< HEAD
 #include "etc/math.h"
-=======
->>>>>>> f1cf6269f94065bfb8498dd7ef06bfbb61442b80
 #include "etc/your-reality.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
