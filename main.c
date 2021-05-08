@@ -15,14 +15,15 @@
 #include "utils/sql_test.h"
 #include "etc/logo.h"
 #include "etc/man.h"
-#include "etc/math.h"
+#include "etc/math_ext.h"
 #include "etc/your-reality.h"
 #include "utils/logger.h"
 #include "utils/sys_info.h"
 #include "utils/update_check.h"
+#include "utils/calc.h"
 
 
-#define VERSION "0.2.5"
+#define VERSION "0.2.6"
 
 bool VER_CHECK_ON_START = true;
 bool DEV_MODE = false;
@@ -87,6 +88,9 @@ int commandHandler(char *cmd){
         return 0;
     } else if(!strcmp(arg[0], "man")){
         showManEntry(arg);
+        return 0;
+    } else if(!strcmp(arg[0], "calc")){
+        startCalc();
         return 0;
     } else if(!strcmp(arg[0], "rainbow") && FUN_CONTENT){
         while(1){              

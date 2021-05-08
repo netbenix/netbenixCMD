@@ -5,7 +5,7 @@
 #include "update_check.h"
 #include "logger.h"
 
-#define DEFAULT_IP "192.168.0.32"
+#define DEFAULT_IP "127.0.0.1"
 
 int checkForUpdate(char ver[10]){
     int sock;
