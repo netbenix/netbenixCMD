@@ -14,5 +14,5 @@ change_dir.o
 update_check.o
 man.o
 calc.o
-math.o
+math_ext.o
 your-reality.o
