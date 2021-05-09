@@ -21,9 +21,10 @@
 #include "utils/sys_info.h"
 #include "utils/update_check.h"
 #include "utils/calc.h"
+#include "utils/clear_screen.h"
 
 
-#define VERSION "0.2.6"
+#define VERSION "0.3.1"
 
 bool VER_CHECK_ON_START = true;
 bool DEV_MODE = false;
@@ -118,6 +119,7 @@ int main(int argc, char *argv[]){
     snprintf(buffer, sizeof(buffer), "Starting netbenixCMD (Version: %s)", VERSION);
     logger(buffer);
     log_Specs(); //Log system specs
+    clearScreen(); //Clear the screen
     showLogo(); //Show the logo
     logger("Logo Displayed.");
     if(argc > 2){
@@ -129,19 +131,19 @@ int main(int argc, char *argv[]){
     //Check the startup args
     if(argc == 2){
     if(!strcmp(argv[1], "--help")){
-        logger("Showing Help.");
+        logger("Showing help.");
         outputHelp();
         exit(0);
     } else if (!strcmp(argv[1], "--gtk-test")){
-        logger("Stating GTK Test.");
+        logger("Stating GTK test.");
         createGTKTestWindow();
         exit(0);
     } else if (!strcmp(argv[1], "--sys-info")){
-        logger("Showing System Information.");
+        logger("Showing system information.");
         print_Specs();
         exit(0);
     } else if (!strcmp(argv[1], "--sql-test")){
-        logger("Starting SQL Test.");
+        logger("Starting SQL test.");
         testSQLConnection();
         exit(0);
     } else if (!strcmp(argv[1], "--no-version-check")){

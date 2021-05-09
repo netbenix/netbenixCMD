@@ -16,3 +16,4 @@ man.o
 calc.o
 math_ext.o
 your-reality.o
+clear_screen.o

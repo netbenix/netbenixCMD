@@ -2,7 +2,7 @@ CC= gcc
 ARGS= -export-dynamic -ansi -std=gnu99
 CFLAGS= $(shell pkg-config --cflags gtk+-3.0) -I/usr/include/mysql
 LDLIBS= $(shell pkg-config --libs gtk+-3.0) -L/usr/lib/mysql -lmysqlclient -lm
-OBJ= main.o logo.o logger.o help.o sys_info.o gtk_test.o sql_test.o show_dir.o change_dir.o update_check.o man.o your-reality.o math_ext.o calc.o
+OBJ= main.o logo.o logger.o help.o sys_info.o gtk_test.o sql_test.o show_dir.o change_dir.o update_check.o man.o your-reality.o math_ext.o calc.o clear_screen.o
 netbenixCMD: $(OBJ)
 	$(CC) $(CFLAGS) $(ARGS) -o netbenixCMD $(OBJ) $(LDLIBS)
 main.o: main.c
@@ -33,3 +33,5 @@ your-reality.o: etc/your-reality.c
 	$(CC) $(CFLAGS) -c etc/your-reality.c
 calc.o: utils/calc.c
 	$(CC) $(CFLAGS) -c utils/calc.c
+clear_screen.o: utils/clear_screen.c
+	$(CC) $(CFLAGS) -c utils/clear_screen.c
